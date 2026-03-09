@@ -1,0 +1,3708 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हरिभाऊ गिते फाउंडेशन – प्रभाग नागरिक सेवा पोर्टल</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & VARIABLES ===== */
+        :root {
+            --primary: #E65100;
+            --primary-dark: #BF360C;
+            --primary-light: #FF8A65;
+            --secondary: #1565C0;
+            --secondary-dark: #0D47A1;
+            --secondary-light: #42A5F5;
+            --accent: #2E7D32;
+            --accent-light: #66BB6A;
+            --saffron: #FF9933;
+            --white-flag: #FFFFFF;
+            --green-flag: #138808;
+            --navy: #000080;
+            --bg-light: #F5F5F5;
+            --bg-card: #FFFFFF;
+            --text-dark: #212121;
+            --text-medium: #424242;
+            --text-light: #757575;
+            --border: #E0E0E0;
+            --shadow: 0 2px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s ease;
+            --font-main: 'Noto Sans Devanagari', sans-serif;
+            --font-heading: 'Tiro Devanagari Marathi', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: linear-gradient(135deg, var(--saffron), var(--primary));
+            color: white;
+            padding: 6px 0;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+
+        .top-bar a:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== TRICOLOR STRIPE ===== */
+        .tricolor-stripe {
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron) 33%, var(--white-flag) 33%, var(--white-flag) 66%, var(--green-flag) 66%);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--saffron), var(--primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            box-shadow: 0 4px 15px rgba(230, 81, 0, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .logo-text p {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-toggle {
+            display: none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .main-nav {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .main-nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--saffron);
+            transition: var(--transition);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 80%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            min-width: 220px;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.83rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NEWS TICKER ===== */
+        .news-ticker {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-bottom: 2px solid var(--saffron);
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .news-ticker .container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ticker-label {
+            background: var(--primary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .ticker-content {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 25s linear infinite;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(13,71,161,0.92), rgba(230,81,0,0.85)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,197.3C672,213,768,203,864,181.3C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 70px 0 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="1.5" fill="rgba(255,255,255,0.08)"/></svg>');
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h2 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-main);
+        }
+
+        .btn-primary {
+            background: var(--saffron);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,153,51,0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,153,51,0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #1B5E20;
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== HERO STATS ===== */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 25px 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-alt {
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--saffron), var(--primary));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            margin-top: 18px;
+            font-size: 1rem;
+        }
+
+        /* ===== PAGE CONTAINER ===== */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--primary-dark);
+            gap: 10px;
+        }
+
+        /* ===== SERVICE GRID ===== */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ===== QUICK LINKS HOME ===== */
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link-item {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .quick-link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+
+        .quick-link-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary);
+        }
+
+        .quick-link-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ===== REPRESENTATIVE SECTION ===== */
+        .rep-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .rep-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .rep-card-header {
+            padding: 40px 20px 20px;
+            position: relative;
+        }
+
+        .rep-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto 15px;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .rep-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .rep-card .rep-title {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .rep-card-body {
+            padding: 20px 30px 30px;
+        }
+
+        .rep-card-body p {
+            font-size: 0.92rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .rep-achievements {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .rep-achievements li {
+            padding: 6px 0;
+            font-size: 0.88rem;
+            color: var(--text-medium);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .rep-achievements li i {
+            color: var(--accent);
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        /* ===== WORKS / EVENTS ===== */
+        .work-item, .event-item {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .work-item:hover, .event-item:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .work-item h4, .event-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .work-meta, .event-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .work-meta span, .event-meta span {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .status-pending { background: #FFF3E0; color: #E65100; }
+        .status-progress { background: #E3F2FD; color: #1565C0; }
+        .status-solved { background: #E8F5E9; color: #2E7D32; }
+        .status-rejected { background: #FFEBEE; color: #C62828; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(to right, var(--accent-light), var(--accent));
+            transition: width 1s ease;
+        }
+
+        /* ===== FORM STYLES ===== */
+        .form-container {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .form-group label .required {
+            color: #C62828;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-family: var(--font-main);
+            transition: var(--transition);
+            background: #FAFAFA;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230,81,0,0.1);
+            background: white;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23757575' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 12px center;
+            padding-left: 12px;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #FAFAFA;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: #FFF3E0;
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        /* ===== COMPLAINT STATUS ===== */
+        .status-tracker {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .tracking-form {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .tracking-form .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .tracking-form .form-row .form-group {
+            flex: 1;
+        }
+
+        .complaint-result {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: none;
+        }
+
+        .complaint-result.show {
+            display: block;
+        }
+
+        .complaint-result-header {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+            color: white;
+            padding: 20px 25px;
+        }
+
+        .complaint-result-body {
+            padding: 25px;
+        }
+
+        .complaint-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .complaint-detail:last-child {
+            border-bottom: none;
+        }
+
+        .complaint-detail .label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .complaint-detail .value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .status-timeline {
+            margin-top: 20px;
+            padding: 20px 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 40px;
+            bottom: -15px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-step:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .timeline-dot.active {
+            background: var(--accent);
+        }
+
+        .timeline-dot.pending {
+            background: var(--border);
+            color: var(--text-light);
+        }
+
+        .timeline-info h5 {
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-info p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .gallery-caption {
+            background: white;
+            padding: 12px 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-medium);
+        }
+
+        /* ===== E-SERVICES ===== */
+        .eservice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .eservice-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .eservice-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .eservice-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .eservice-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .eservice-card p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ===== SCHEMES ===== */
+        .scheme-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-right: 5px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .scheme-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scheme-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .scheme-card .scheme-type {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-info-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 3px;
+            width: 25px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item h5 {
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+
+        .contact-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            border-radius: var(--radius);
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--secondary);
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        /* ===== EMERGENCY ===== */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .emergency-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+            transition: var(--transition);
+        }
+
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .emergency-card i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .emergency-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .emergency-card .phone {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .emergency-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== MOBILE APPS ===== */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            display: flex;
+            gap: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            align-items: center;
+        }
+
+        .app-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .app-info h4 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .app-info p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ===== NEWS ===== */
+        .news-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-item {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .news-item:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-date {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: var(--radius-sm);
+            padding: 10px 15px;
+            text-align: center;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+
+        .news-date .day {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .news-date .month {
+            font-size: 0.75rem;
+            display: block;
+        }
+
+        .news-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .news-content p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        .news-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        .admin-login {
+            max-width: 400px;
+            margin: 40px auto;
+        }
+
+        .admin-dashboard {
+            display: none;
+        }
+
+        .admin-dashboard.show {
+            display: block;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .admin-stat {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .admin-stat .number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .admin-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .admin-table-container {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            background: var(--secondary-dark);
+            color: white;
+            padding: 14px 16px;
+            text-align: right;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .admin-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .admin-table tr:hover td {
+            background: #F5F5F5;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .admin-btn {
+            padding: 5px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 600;
+            font-family: var(--font-main);
+            transition: var(--transition);
+        }
+
+        .admin-btn-approve {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .admin-btn-reject {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .admin-btn-assign {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 10px 20px;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            background: white;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .admin-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .admin-tab:hover {
+            border-color: var(--primary);
+        }
+
+        /* ===== PRABHAG INFO ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list .label {
+            color: var(--text-light);
+        }
+
+        .info-list .value {
+            font-weight: 600;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .about-text {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+
+        .about-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-side-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .about-side-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .about-side-card h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .about-side-card p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-top: 4px solid var(--saffron);
+        }
+
+        .mission-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .mission-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .mission-card p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #CCC;
+            padding: 50px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--saffron);
+            border-radius: 2px;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            padding: 5px 0;
+        }
+
+        .footer-links a {
+            color: #CCC;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--saffron);
+            padding-right: 5px;
+        }
+
+        .footer-bottom {
+            background: rgba(0,0,0,0.3);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--saffron);
+            transform: translateY(-3px);
+        }
+
+        /* ===== WHATSAPP FLOATING ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+            z-index: 999;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        /* ===== ALERT ===== */
+        .alert {
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-success {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #A5D6A7;
+        }
+
+        .alert-warning {
+            background: #FFF3E0;
+            color: #E65100;
+            border: 1px solid #FFCC80;
+        }
+
+        .alert-info {
+            background: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #90CAF9;
+        }
+
+        /* ===== PAGE BANNER ===== */
+        .page-banner {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary), var(--primary));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .page-banner h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .page-banner p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== TAB FILTER ===== */
+        .tab-filter {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 22px;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            background: white;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero h2 { font-size: 2.2rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .admin-stats { grid-template-columns: repeat(2, 1fr); }
+            .info-grid { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .mission-cards { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .main-nav { display: none; position: absolute; width: 100%; top: 100%; left: 0; z-index: 999; }
+            .main-nav.show { display: block; }
+            .main-nav ul { flex-direction: column; }
+            .main-nav a { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .dropdown-menu { position: static; box-shadow: none; }
+            .dropdown:hover .dropdown-menu { display: none; }
+            .dropdown.open .dropdown-menu { display: block; }
+            .hero h2 { font-size: 1.8rem; }
+            .hero p { font-size: 0.95rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-card { padding: 18px 10px; }
+            .stat-number { font-size: 1.6rem; }
+            .top-bar .container { justify-content: center; text-align: center; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .rep-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .tracking-form .form-row { flex-direction: column; }
+            .section { padding: 40px 0; }
+            .form-container { padding: 25px; }
+            .news-item { flex-direction: column; }
+            .mission-cards { grid-template-columns: 1fr; }
+            .admin-stats { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-stats { grid-template-columns: 1fr 1fr; }
+            .logo-text h1 { font-size: 1.05rem; }
+            .section-header h2 { font-size: 1.6rem; }
+            .quick-links-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-grid { grid-template-columns: 1fr 1fr; }
+            .emergency-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== LOADING ANIMATION ===== */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="container">
+            <div>
+                <i class="fas fa-phone-alt"></i> हेल्पलाइन: +91 98765 43210 &nbsp;&nbsp;|&nbsp;&nbsp;
+                <i class="fas fa-envelope"></i> info@haribhaugite.org
+            </div>
+            <div class="top-bar-right">
+                <a href="#" onclick="navigateTo('admin')"><i class="fas fa-user-shield"></i> ॲडमिन</a>
+                <a href="#" onclick="navigateTo('emergency')"><i class="fas fa-ambulance"></i> आपत्कालीन</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TRICOLOR STRIPE ===== -->
+    <div class="tricolor-stripe"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo-icon">ह</div>
+                <div class="logo-text">
+                    <h1>हरिभाऊ गिते फाउंडेशन</h1>
+                    <p>प्रभाग नागरिक सेवा पोर्टल | नगरसेवक: गणेशभाऊ गिते & दीपालीताई गिते</p>
+                </div>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="main-nav" id="mainNav">
+            <div class="container">
+                <ul>
+                    <li><a href="#" class="active" onclick="navigateTo('home')"><i class="fas fa-home"></i> मुख्यपृष्ठ</a></li>
+                    <li><a href="#" onclick="navigateTo('about')">फाउंडेशन</a></li>
+                    <li><a href="#" onclick="navigateTo('nagarsevak')">नगरसेवक</a></li>
+                    <li><a href="#" onclick="navigateTo('prabhag')">प्रभाग माहिती</a></li>
+                    <li><a href="#" onclick="navigateTo('events')">कार्यक्रम</a></li>
+                    <li><a href="#" onclick="navigateTo('works')">सुरू असलेली कामे</a></li>
+                    <li class="dropdown">
+                        <a href="#" onclick="navigateTo('grievance')">तक्रार निवारण ▾</a>
+                        <div class="dropdown-menu">
+                            <a href="#" onclick="navigateTo('grievance')">तक्रार नोंदणी</a>
+                            <a href="#" onclick="navigateTo('complaint-status')">तक्रार स्थिती</a>
+                        </div>
+                    </li>
+                    <li><a href="#" onclick="navigateTo('eservices')">ई-सेवा</a></li>
+                    <li><a href="#" onclick="navigateTo('gallery')">फोटो गॅलरी</a></li>
+                    <li><a href="#" onclick="navigateTo('news')">बातम्या</a></li>
+                    <li><a href="#" onclick="navigateTo('schemes')">शासकीय योजना</a></li>
+                    <li><a href="#" onclick="navigateTo('contact')">संपर्क</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== NEWS TICKER ===== -->
+    <div class="news-ticker">
+        <div class="container">
+            <span class="ticker-label"><i class="fas fa-bullhorn"></i> ताज्या बातम्या</span>
+            <div class="ticker-content">
+                <span class="ticker-text">🔔 रक्तदान शिबिर: २५ जानेवारी २०२५ रोजी प्रभाग कार्यालयात | 🛣️ रस्ता दुरुस्ती कार्य प्रगतीपथावर | 🏥 मोफत आरोग्य तपासणी शिबिर लवकरच | 📢 पाणीपुरवठा वेळापत्रक अपडेट केले आहे</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HOME PAGE ===== -->
+    <div class="page active" id="page-home">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">🏛️ प्रभाग नागरिक सेवा पोर्टल</div>
+                    <h2>हरिभाऊ गिते फाउंडेशन</h2>
+                    <p>नागरिकांच्या सेवेत सदैव तत्पर! प्रभागातील विकास कामे, सामाजिक उपक्रम, नागरी सुविधा आणि तक्रार निवारण प्रणालीसाठी एकाच ठिकाणी सर्व माहिती उपलब्ध.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="navigateTo('grievance')">
+                            <i class="fas fa-edit"></i> तक्रार नोंदवा
+                        </a>
+                        <a href="#" class="btn btn-outline" onclick="navigateTo('complaint-status')">
+                            <i class="fas fa-search"></i> तक्रार स्थिती तपासा
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="stat-pop">५०,०००+</span>
+                        <span class="stat-label">प्रभाग लोकसंख्या</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">१२०+</span>
+                        <span class="stat-label">पूर्ण झालेली कामे</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">८५+</span>
+                        <span class="stat-label">सामाजिक कार्यक्रम</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">९५%</span>
+                        <span class="stat-label">तक्रार निवारण दर</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>द्रुत सेवा</h2>
+                    <p>आपल्याला हवी असलेली सेवा एका क्लिकवर मिळवा</p>
+                </div>
+                <div class="quick-links-grid">
+                    <a class="quick-link-item" onclick="navigateTo('grievance')">
+                        <i class="fas fa-file-alt"></i>
+                        <span>तक्रार नोंदणी</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('complaint-status')">
+                        <i class="fas fa-search-location"></i>
+                        <span>तक्रार स्थिती</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('eservices')">
+                        <i class="fas fa-laptop"></i>
+                        <span>ई-सेवा</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('works')">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>सुरू कामे</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('schemes')">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>शासकीय योजना</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('events')">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>कार्यक्रम</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('emergency')">
+                        <i class="fas fa-phone-alt" style="color:#C62828"></i>
+                        <span>आपत्कालीन संपर्क</span>
+                    </a>
+                    <a class="quick-link-item" onclick="navigateTo('apps')">
+                        <i class="fas fa-mobile-alt" style="color:#7B1FA2"></i>
+                        <span>मोबाइल ॲप्स</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Representative Intro on Home -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>आपले प्रतिनिधी</h2>
+                    <p>प्रभागाचे लोकप्रिय नगरसेवक</p>
+                </div>
+                <div class="rep-grid">
+                    <div class="rep-card">
+                        <div class="rep-card-header">
+                            <div class="rep-avatar" style="background: linear-gradient(135deg, var(--saffron), var(--primary));">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>गणेशभाऊ गिते</h3>
+                            <span class="rep-title">नगरसेवक</span>
+                        </div>
+                        <div class="rep-card-body">
+                            <p>प्रभागातील विकास कामांसाठी अथक प्रयत्नशील. रस्ते, ड्रेनेज, पाणीपुरवठा आणि सार्वजनिक सुविधांच्या उन्नतीसाठी कटिबद्ध.</p>
+                            <a href="#" class="card-link" onclick="navigateTo('nagarsevak')">अधिक माहिती <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                    <div class="rep-card">
+                        <div class="rep-card-header">
+                            <div class="rep-avatar" style="background: linear-gradient(135deg, #E91E63, #AD1457);">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>दीपालीताई गिते</h3>
+                            <span class="rep-title">नगरसेविका</span>
+                        </div>
+                        <div class="rep-card-body">
+                            <p>सामाजिक उपक्रम, महिला सबलीकरण, आरोग्य शिबिरे आणि शैक्षणिक कार्यक्रमांच्या माध्यमातून समाजसेवा.</p>
+                            <a href="#" class="card-link" onclick="navigateTo('nagarsevak')">अधिक माहिती <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Events -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>ताजे कार्यक्रम व उपक्रम</h2>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #C62828, #EF5350);">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3>रक्तदान शिबिर</h3>
+                            <p>प्रभागातील नागरिकांसाठी मोफत रक्तदान शिबिराचे आयोजन. ३५०+ नागरिकांनी सहभाग घेतला.</p>
+                            <a href="#" class="card-link" onclick="navigateTo('events')">अधिक वाचा <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #2E7D32, #66BB6A);">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3>वृक्षारोपण मोहीम</h3>
+                            <p>पर्यावरण संरक्षणासाठी हजारो वृक्ष लागवड. प्रभागातील सर्व रस्त्यांवर हिरवाई निर्माण.</p>
+                            <a href="#" class="card-link" onclick="navigateTo('events')">अधिक वाचा <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #1565C0, #42A5F5);">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3>मोफत आरोग्य तपासणी</h3>
+                            <p>तज्ञ डॉक्टरांद्वारे नागरिकांसाठी मोफत आरोग्य तपासणी शिबिर. सर्व वयोगटांसाठी.</p>
+                            <a href="#" class="card-link" onclick="navigateTo('events')">अधिक वाचा <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ongoing Works Preview -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>सुरू असलेली विकास कामे</h2>
+                </div>
+                <div class="work-item">
+                    <h4>🛣️ मुख्य रस्ता डांबरीकरण</h4>
+                    <p>प्रभागातील मुख्य रस्त्यांचे डांबरीकरण आणि दुरुस्ती कार्य प्रगतीपथावर आहे.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> प्रारंभ: जानेवारी २०२५</span>
+                        <span><i class="fas fa-clock"></i> प्रगती: ७५%</span>
+                        <span class="status-badge status-progress">प्रगतीपथावर</span>
+                    </div>
+                </div>
+                <div class="work-item" style="border-left-color: var(--accent);">
+                    <h4>💡 पथदिवे बसविणे</h4>
+                    <p>LED पथदिव्यांची स्थापना - सर्व गल्ल्यांमध्ये प्रकाश व्यवस्था सुधारणे.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                    </div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> प्रारंभ: डिसेंबर २०२४</span>
+                        <span><i class="fas fa-clock"></i> प्रगती: ६०%</span>
+                        <span class="status-badge status-progress">प्रगतीपथावर</span>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top: 25px;">
+                    <a href="#" class="btn btn-secondary" onclick="navigateTo('works')">सर्व कामे पहा <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== ABOUT PAGE ===== -->
+    <div class="page" id="page-about">
+        <div class="page-banner">
+            <div class="container">
+                <h2>हरिभाऊ गिते फाउंडेशन विषयी</h2>
+                <p>समाजसेवा, विकास आणि नागरिक कल्याणासाठी समर्पित</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>फाउंडेशन विषयी</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>आमच्याबद्दल</h3>
+                        <p>हरिभाऊ गिते फाउंडेशनची स्थापना प्रभागातील नागरिकांच्या सर्वांगीण विकासासाठी आणि समाजसेवेसाठी करण्यात आली आहे. फाउंडेशन विविध सामाजिक उपक्रम, आरोग्य शिबिरे, शैक्षणिक कार्यक्रम आणि विकास कामे राबवते.</p>
+                        <p>नागरिकांना डिजिटल माध्यमातून माहिती आणि सेवा उपलब्ध करून देणे, पारदर्शकता राखणे आणि नगरसेवक कार्यालय व नागरिक यांच्यातील संवाद सुधारणे हे फाउंडेशनचे प्रमुख उद्दिष्ट आहे.</p>
+                        <p>आम्ही रक्तदान शिबिरे, वृक्षारोपण मोहिमा, मोफत आरोग्य तपासणी, महिला सबलीकरण कार्यक्रम, आणि अनेक समाजकल्याणकारी उपक्रम राबवतो.</p>
+                        <h3 style="margin-top: 25px;">आमची उद्दिष्टे</h3>
+                        <ul class="rep-achievements">
+                            <li><i class="fas fa-check-circle"></i> नागरिकांना अचूक प्रभाग माहिती उपलब्ध करणे</li>
+                            <li><i class="fas fa-check-circle"></i> सुरू आणि पूर्ण विकास कामे प्रदर्शित करणे</li>
+                            <li><i class="fas fa-check-circle"></i> सामाजिक कार्यक्रम व उपक्रमांचे आयोजन</li>
+                            <li><i class="fas fa-check-circle"></i> नागरिक सुविधांसाठी ई-सेवा उपलब्ध करणे</li>
+                            <li><i class="fas fa-check-circle"></i> तक्रार नोंदणी व निवारण सक्षम करणे</li>
+                            <li><i class="fas fa-check-circle"></i> महानगरपालिका कामकाजात पारदर्शकता राखणे</li>
+                        </ul>
+                    </div>
+                    <div class="about-sidebar">
+                        <div class="about-side-card">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>आमचे ध्येय</h4>
+                            <p>प्रत्येक नागरिकाला उत्तम सुविधा आणि सेवा देणे</p>
+                        </div>
+                        <div class="about-side-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>आमची दृष्टी</h4>
+                            <p>स्वच्छ, सुंदर आणि विकसित प्रभाग निर्माण करणे</p>
+                        </div>
+                        <div class="about-side-card">
+                            <i class="fas fa-handshake"></i>
+                            <h4>आमची मूल्ये</h4>
+                            <p>सेवा, पारदर्शकता, प्रामाणिकपणा आणि विकास</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-cards">
+                    <div class="mission-card">
+                        <i class="fas fa-users"></i>
+                        <h4>समाज सेवा</h4>
+                        <p>रक्तदान, आरोग्य शिबिर, वृक्षारोपण व अन्य सामाजिक कार्य</p>
+                    </div>
+                    <div class="mission-card">
+                        <i class="fas fa-road"></i>
+                        <h4>विकास कामे</h4>
+                        <p>रस्ते, ड्रेनेज, पथदिवे, सार्वजनिक पायाभूत सुविधा</p>
+                    </div>
+                    <div class="mission-card">
+                        <i class="fas fa-comments"></i>
+                        <h4>नागरिक संवाद</h4>
+                        <p>तक्रार निवारण, WhatsApp सूचना, डिजिटल संपर्क</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== NAGARSEVAK PAGE ===== -->
+    <div class="page" id="page-nagarsevak">
+        <div class="page-banner">
+            <div class="container">
+                <h2>आमचे नगरसेवक</h2>
+                <p>प्रभाग प्रतिनिधी परिचय</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>नगरसेवक</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="rep-grid">
+                    <div class="rep-card">
+                        <div class="rep-card-header" style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2);">
+                            <div class="rep-avatar" style="background: linear-gradient(135deg, var(--saffron), var(--primary));">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>गणेशभाऊ गिते</h3>
+                            <span class="rep-title">नगरसेवक - प्रभाग प्रतिनिधी</span>
+                        </div>
+                        <div class="rep-card-body">
+                            <p>गणेशभाऊ गिते हे प्रभागाचे अनुभवी आणि लोकप्रिय नगरसेवक आहेत. त्यांनी प्रभागातील रस्ते, ड्रेनेज, पाणीपुरवठा आणि सार्वजनिक सुविधांच्या विकासासाठी अथक प्रयत्न केले आहेत.</p>
+                            <h4 style="margin-top:15px; font-size:1rem;">प्रमुख कार्ये:</h4>
+                            <ul class="rep-achievements">
+                                <li><i class="fas fa-check-circle"></i> प्रभागातील सर्व रस्त्यांचे डांबरीकरण</li>
+                                <li><i class="fas fa-check-circle"></i> ड्रेनेज प्रणाली सुधारणा</li>
+                                <li><i class="fas fa-check-circle"></i> LED पथदिवे बसविणे</li>
+                                <li><i class="fas fa-check-circle"></i> सार्वजनिक पायाभूत सुविधा विकास</li>
+                                <li><i class="fas fa-check-circle"></i> नागरिक तक्रार निवारण प्रणाली</li>
+                                <li><i class="fas fa-check-circle"></i> पाणीपुरवठा सुधारणा</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="rep-card">
+                        <div class="rep-card-header" style="background: linear-gradient(135deg, #FCE4EC, #F8BBD0);">
+                            <div class="rep-avatar" style="background: linear-gradient(135deg, #E91E63, #AD1457);">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h3>दीपालीताई गिते</h3>
+                            <span class="rep-title">नगरसेविका - सामाजिक उपक्रम प्रमुख</span>
+                        </div>
+                        <div class="rep-card-body">
+                            <p>दीपालीताई गिते या सामाजिक उपक्रम, महिला सबलीकरण आणि समाजकल्याण कार्यक्रमांसाठी ओळखल्या जातात. त्या विविध सामाजिक संस्थांसोबत काम करतात.</p>
+                            <h4 style="margin-top:15px; font-size:1rem;">प्रमुख कार्ये:</h4>
+                            <ul class="rep-achievements">
+                                <li><i class="fas fa-check-circle"></i> महिला सबलीकरण कार्यक्रम</li>
+                                <li><i class="fas fa-check-circle"></i> रक्तदान शिबिर आयोजन</li>
+                                <li><i class="fas fa-check-circle"></i> मोफत आरोग्य तपासणी शिबिरे</li>
+                                <li><i class="fas fa-check-circle"></i> शैक्षणिक सहाय्य योजना</li>
+                                <li><i class="fas fa-check-circle"></i> वृक्षारोपण मोहीम</li>
+                                <li><i class="fas fa-check-circle"></i> समाजकल्याण कार्यक्रम</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== PRABHAG INFO PAGE ===== -->
+    <div class="page" id="page-prabhag">
+        <div class="page-banner">
+            <div class="container">
+                <h2>प्रभाग माहिती</h2>
+                <p>प्रभागाची संपूर्ण माहिती</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>प्रभाग माहिती</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-map-marker-alt" style="color:var(--primary)"></i> स्थान व क्षेत्र</h3>
+                        <ul class="info-list">
+                            <li><span class="label">प्रभाग क्रमांक</span> <span class="value">—</span></li>
+                            <li><span class="label">क्षेत्रफळ</span> <span class="value">— चौ. किमी</span></li>
+                            <li><span class="label">लोकसंख्या</span> <span class="value">५०,०००+</span></li>
+                            <li><span class="label">घरे</span> <span class="value">१२,०००+</span></li>
+                            <li><span class="label">मतदार</span> <span class="value">३५,०००+</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-building" style="color:var(--secondary)"></i> महत्त्वाची ठिकाणे</h3>
+                        <ul class="info-list">
+                            <li><span class="label">शाळा</span> <span class="value">८</span></li>
+                            <li><span class="label">दवाखाने</span> <span class="value">५</span></li>
+                            <li><span class="label">उद्याने</span> <span class="value">४</span></li>
+                            <li><span class="label">समाज मंदिर</span> <span class="value">३</span></li>
+                            <li><span class="label">क्रीडांगण</span> <span class="value">२</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-cogs" style="color:var(--accent)"></i> पायाभूत सुविधा</h3>
+                        <ul class="info-list">
+                            <li><span class="label">रस्ते (किमी)</span> <span class="value">४५ किमी</span></li>
+                            <li><span class="label">पथदिवे</span> <span class="value">१,२००+</span></li>
+                            <li><span class="label">ड्रेनेज (किमी)</span> <span class="value">३० किमी</span></li>
+                            <li><span class="label">पाणी पुरवठा कनेक्शन</span> <span class="value">१०,०००+</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-map" style="color:#7B1FA2"></i> प्रभाग नकाशा</h3>
+                        <div class="map-placeholder" style="height:220px; border-radius: var(--radius-sm);">
+                            <i class="fas fa-map-marked-alt" style="font-size:3rem;"></i>
+                            <p style="margin-top:10px; font-size:0.9rem;">प्रभाग नकाशा</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== EVENTS PAGE ===== -->
+    <div class="page" id="page-events">
+        <div class="page-banner">
+            <div class="container">
+                <h2>कार्यक्रम व उपक्रम</h2>
+                <p>फाउंडेशनद्वारे आयोजित सामाजिक उपक्रम</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>कार्यक्रम</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="tab-filter">
+                    <button class="tab-btn active">सर्व</button>
+                    <button class="tab-btn">रक्तदान शिबिर</button>
+                    <button class="tab-btn">आरोग्य शिबिर</button>
+                    <button class="tab-btn">वृक्षारोपण</button>
+                    <button class="tab-btn">समाजकल्याण</button>
+                </div>
+                <div class="event-item" style="border-left-color: #C62828;">
+                    <h4>🩸 रक्तदान शिबिर</h4>
+                    <p>वार्षिक रक्तदान शिबिराचे आयोजन. ३५०+ नागरिकांनी रक्तदान केले. तालुका स्तरीय रुग्णालयासोबत सहकार्य.</p>
+                    <div class="event-meta">
+                        <span><i class="fas fa-calendar"></i> २५ जानेवारी २०२५</span>
+                        <span><i class="fas fa-map-marker-alt"></i> प्रभाग कार्यालय</span>
+                        <span><i class="fas fa-users"></i> ३५०+ सहभागी</span>
+                    </div>
+                </div>
+                <div class="event-item" style="border-left-color: #2E7D32;">
+                    <h4>🌳 वृक्षारोपण मोहीम</h4>
+                    <p>पर्यावरण रक्षणासाठी मोठी वृक्षारोपण मोहीम. प्रभागातील सर्व रस्त्यांवर आणि उद्यानांमध्ये वृक्ष लागवड.</p>
+                    <div class="event-meta">
+                        <span><i class="fas fa-calendar"></i> १५ ऑगस्ट २०२४</span>
+                        <span><i class="fas fa-map-marker-alt"></i> संपूर्ण प्रभाग</span>
+                        <span><i class="fas fa-tree"></i> ५,०००+ वृक्ष</span>
+                    </div>
+                </div>
+                <div class="event-item" style="border-left-color: #1565C0;">
+                    <h4>🏥 मोफत आरोग्य तपासणी शिबिर</h4>
+                    <p>नेत्र तपासणी, रक्तदाब तपासणी, रक्तशर्करा तपासणी - तज्ञ डॉक्टरांद्वारे मोफत सेवा.</p>
+                    <div class="event-meta">
+                        <span><i class="fas fa-calendar"></i> १० डिसेंबर २०२४</span>
+                        <span><i class="fas fa-map-marker-alt"></i> समाज मंदिर</span>
+                        <span><i class="fas fa-users"></i> ५००+ लाभार्थी</span>
+                    </div>
+                </div>
+                <div class="event-item" style="border-left-color: #7B1FA2;">
+                    <h4>👩 महिला सबलीकरण कार्यक्रम</h4>
+                    <p>महिलांसाठी कौशल्य विकास, स्वयंरोजगार मार्गदर्शन आणि आर्थिक साक्षरता कार्यक्रम.</p>
+                    <div class="event-meta">
+                        <span><i class="fas fa-calendar"></i> ८ मार्च २०२५</span>
+                        <span><i class="fas fa-map-marker-alt"></i> प्रभाग कार्यालय</span>
+                        <span><i class="fas fa-users"></i> २००+ महिला</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== ONGOING WORKS PAGE ===== -->
+    <div class="page" id="page-works">
+        <div class="page-banner">
+            <div class="container">
+                <h2>सुरू असलेली विकास कामे</h2>
+                <p>प्रभागातील विकास प्रकल्पांची माहिती</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>सुरू कामे</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="tab-filter">
+                    <button class="tab-btn active">सर्व</button>
+                    <button class="tab-btn">रस्ते</button>
+                    <button class="tab-btn">ड्रेनेज</button>
+                    <button class="tab-btn">पथदिवे</button>
+                    <button class="tab-btn">पायाभूत सुविधा</button>
+                </div>
+                <div class="work-item">
+                    <h4>🛣️ मुख्य रस्ता डांबरीकरण - टप्पा १</h4>
+                    <p>प्रभागातील मुख्य रस्त्यांचे डांबरीकरण व दुरुस्ती. ५ किमी रस्त्यांचे काम सुरू.</p>
+                    <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> जानेवारी - मार्च २०२५</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹ ५० लाख</span>
+                        <span class="status-badge status-progress">प्रगतीपथावर - ७५%</span>
+                    </div>
+                </div>
+                <div class="work-item" style="border-left-color: var(--secondary);">
+                    <h4>🔧 ड्रेनेज प्रणाली सुधारणा</h4>
+                    <p>पावसाळी पाणी निचरा प्रणाली अद्ययावत करणे. नवीन ड्रेनेज लाइन टाकणे.</p>
+                    <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 45%;"></div></div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> फेब्रुवारी - एप्रिल २०२५</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹ ३५ लाख</span>
+                        <span class="status-badge status-progress">प्रगतीपथावर - ४५%</span>
+                    </div>
+                </div>
+                <div class="work-item" style="border-left-color: #FFC107;">
+                    <h4>💡 LED पथदिवे बसविणे</h4>
+                    <p>संपूर्ण प्रभागात ऊर्जा-कार्यक्षम LED पथदिवे बसविणे. ३०० नवीन पथदिवे.</p>
+                    <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> डिसेंबर २०२४ - फेब्रुवारी २०२५</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹ २० लाख</span>
+                        <span class="status-badge status-progress">प्रगतीपथावर - ६०%</span>
+                    </div>
+                </div>
+                <div class="work-item" style="border-left-color: var(--accent);">
+                    <h4>🏗️ सार्वजनिक उद्यान विकास</h4>
+                    <p>प्रभागातील उद्यानांचे सुशोभीकरण, बालोद्यान उपकरणे व जॉगिंग ट्रॅक.</p>
+                    <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 30%;"></div></div>
+                    <div class="work-meta">
+                        <span><i class="fas fa-calendar"></i> मार्च - मे २०२५</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹ १५ लाख</span>
+                        <span class="status-badge status-pending">नियोजित - ३०%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== GRIEVANCE REDRESSAL PAGE ===== -->
+    <div class="page" id="page-grievance">
+        <div class="page-banner">
+            <div class="container">
+                <h2>तक्रार निवारण प्रणाली</h2>
+                <p>आपली तक्रार नोंदवा - आम्ही सोडवू</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>तक्रार नोंदणी</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="form-container">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        कृपया सर्व माहिती अचूक भरा. तक्रार नोंदणीनंतर तुम्हाला तक्रार क्रमांक मिळेल.
+                    </div>
+                    <form id="grievanceForm" onsubmit="submitGrievance(event)">
+                        <div class="form-group">
+                            <label>नागरिकाचे नाव <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="citizenName" placeholder="आपले पूर्ण नाव लिहा" required>
+                        </div>
+                        <div class="form-group">
+                            <label>मोबाइल क्रमांक <span class="required">*</span></label>
+                            <input type="tel" class="form-control" id="citizenMobile" placeholder="१० अंकी मोबाइल क्रमांक" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>परिसर / वस्ती <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="citizenArea" placeholder="आपला परिसर / वस्तीचे नाव" required>
+                        </div>
+                        <div class="form-group">
+                            <label>विभाग <span class="required">*</span></label>
+                            <select class="form-control" id="department" required>
+                                <option value="">-- विभाग निवडा --</option>
+                                <option value="रस्ते">रस्ते विभाग</option>
+                                <option value="पाणीपुरवठा">पाणीपुरवठा विभाग</option>
+                                <option value="ड्रेनेज">ड्रेनेज / सांडपाणी विभाग</option>
+                                <option value="पथदिवे">पथदिवे / वीज विभाग</option>
+                                <option value="स्वच्छता">स्वच्छता विभाग</option>
+                                <option value="आरोग्य">आरोग्य विभाग</option>
+                                <option value="अतिक्रमण">अतिक्रमण विभाग</option>
+                                <option value="इतर">इतर</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>समस्येचे वर्णन <span class="required">*</span></label>
+                            <textarea class="form-control" id="issueDescription" placeholder="आपली समस्या सविस्तर लिहा..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>फोटो अपलोड (पर्यायी)</label>
+                            <div class="file-upload" onclick="document.getElementById('photoUpload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>फोटो अपलोड करण्यासाठी क्लिक करा</p>
+                                <p style="font-size:0.75rem; color:#999;">JPG, PNG - कमाल ५MB</p>
+                                <input type="file" id="photoUpload" accept="image/*">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                            <i class="fas fa-paper-plane"></i> तक्रार नोंदवा
+                        </button>
+                    </form>
+                    <div id="grievanceSuccess" style="display:none;">
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>तक्रार यशस्वीरित्या नोंदवली गेली!</strong><br>
+                                तक्रार क्रमांक: <strong id="complaintId"></strong><br>
+                                कृपया हा क्रमांक जतन करा. आपल्या तक्रारीची स्थिती तपासण्यासाठी याचा वापर करा.
+                            </div>
+                        </div>
+                        <div style="text-align:center; margin-top:20px;">
+                            <a href="#" class="btn btn-secondary btn-sm" onclick="navigateTo('complaint-status')">तक्रार स्थिती तपासा</a>
+                            &nbsp;
+                            <a href="#" class="btn btn-success btn-sm" onclick="resetGrievanceForm()">नवीन तक्रार</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== COMPLAINT STATUS PAGE ===== -->
+    <div class="page" id="page-complaint-status">
+        <div class="page-banner">
+            <div class="container">
+                <h2>तक्रार स्थिती तपासा</h2>
+                <p>आपल्या तक्रारीची सद्यस्थिती जाणून घ्या</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>तक्रार स्थिती</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="status-tracker">
+                    <div class="tracking-form">
+                        <h3 style="margin-bottom:20px; font-family: var(--font-heading);">तक्रार शोधा</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>तक्रार क्रमांक</label>
+                                <input type="text" class="form-control" id="trackComplaintId" placeholder="उदा. HGF-20250125-001">
+                            </div>
+                            <div class="form-group">
+                                <label>मोबाइल क्रमांक</label>
+                                <input type="tel" class="form-control" id="trackMobile" placeholder="१० अंकी क्रमांक">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="trackComplaint()">
+                            <i class="fas fa-search"></i> स्थिती तपासा
+                        </button>
+                    </div>
+                    <div class="complaint-result" id="complaintResult">
+                        <div class="complaint-result-header">
+                            <h3><i class="fas fa-file-alt"></i> तक्रार तपशील</h3>
+                        </div>
+                        <div class="complaint-result-body">
+                            <div class="complaint-detail">
+                                <span class="label">तक्रार क्रमांक</span>
+                                <span class="value" id="resultId">HGF-20250125-001</span>
+                            </div>
+                            <div class="complaint-detail">
+                                <span class="label">नागरिक</span>
+                                <span class="value" id="resultName">—</span>
+                            </div>
+                            <div class="complaint-detail">
+                                <span class="label">विभाग</span>
+                                <span class="value" id="resultDept">—</span>
+                            </div>
+                            <div class="complaint-detail">
+                                <span class="label">तारीख</span>
+                                <span class="value" id="resultDate">—</span>
+                            </div>
+                            <div class="complaint-detail">
+                                <span class="label">स्थिती</span>
+                                <span class="value"><span class="status-badge status-progress" id="resultStatus">प्रगतीपथावर</span></span>
+                            </div>
+                            <div class="status-timeline">
+                                <h4 style="margin-bottom:15px;">प्रगती टाइमलाइन</h4>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot active"><i class="fas fa-check"></i></div>
+                                    <div class="timeline-info">
+                                        <h5>तक्रार नोंदवली</h5>
+                                        <p>नागरिकाने तक्रार यशस्वीरित्या सादर केली</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot active"><i class="fas fa-check"></i></div>
+                                    <div class="timeline-info">
+                                        <h5>प्रशासन पडताळणी</h5>
+                                        <p>तक्रारीची पडताळणी पूर्ण</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot active"><i class="fas fa-check"></i></div>
+                                    <div class="timeline-info">
+                                        <h5>विभाग नियुक्ती</h5>
+                                        <p>संबंधित विभागाला तक्रार पाठवली</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending"><i class="fas fa-hourglass-half"></i></div>
+                                    <div class="timeline-info">
+                                        <h5>निराकरण प्रगतीपथावर</h5>
+                                        <p>विभागाकडून कार्यवाही सुरू</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== E-SERVICES PAGE ===== -->
+    <div class="page" id="page-eservices">
+        <div class="page-banner">
+            <div class="container">
+                <h2>ई-सेवा (E-Services)</h2>
+                <p>ऑनलाइन नागरी सेवा एका क्लिकवर</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>ई-सेवा</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="eservice-grid">
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-home" style="color:#E65100"></i>
+                        <h4>मालमत्ता कर भरणा</h4>
+                        <p>ऑनलाइन मालमत्ता कर भरणा सुविधा</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-tint" style="color:#1565C0"></i>
+                        <h4>पाणी बिल भरणा</h4>
+                        <p>पाणीपट्टी ऑनलाइन भरा</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-baby" style="color:#E91E63"></i>
+                        <h4>जन्म प्रमाणपत्र</h4>
+                        <p>जन्म नोंदणी व प्रमाणपत्र</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-skull-crossbones" style="color:#424242"></i>
+                        <h4>मृत्यू प्रमाणपत्र</h4>
+                        <p>मृत्यू नोंदणी व प्रमाणपत्र</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-building" style="color:#2E7D32"></i>
+                        <h4>बांधकाम परवाना</h4>
+                        <p>बांधकाम परवाना अर्ज</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-id-card" style="color:#7B1FA2"></i>
+                        <h4>रहिवासी प्रमाणपत्र</h4>
+                        <p>रहिवासी दाखला मिळवा</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-file-invoice" style="color:#FF6F00"></i>
+                        <h4>ना-हरकत प्रमाणपत्र</h4>
+                        <p>NOC अर्ज प्रक्रिया</p>
+                    </a>
+                    <a href="#" class="eservice-card">
+                        <i class="fas fa-store" style="color:#00695C"></i>
+                        <h4>व्यापार परवाना</h4>
+                        <p>व्यापार परवाना नोंदणी</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== MOBILE APPS PAGE ===== -->
+    <div class="page" id="page-apps">
+        <div class="page-banner">
+            <div class="container">
+                <h2>उपयुक्त मोबाइल ॲप्स</h2>
+                <p>नागरिक सेवांसाठी उपयुक्त मोबाइल ॲप्लिकेशन्स</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>मोबाइल ॲप्स</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="app-grid">
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #1565C0, #42A5F5);"><i class="fas fa-city"></i></div>
+                        <div class="app-info">
+                            <h4>महानगरपालिका ॲप</h4>
+                            <p>सर्व महानगरपालिका सेवा एकाच ॲपमध्ये</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #E65100, #FF8A65);"><i class="fas fa-id-badge"></i></div>
+                        <div class="app-info">
+                            <h4>DigiLocker</h4>
+                            <p>डिजिटल कागदपत्रे सुरक्षितपणे जतन करा</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #2E7D32, #66BB6A);"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div class="app-info">
+                            <h4>UMANG</h4>
+                            <p>सर्व शासकीय सेवा एकाच ठिकाणी</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #7B1FA2, #BA68C8);"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="app-info">
+                            <h4>mParivahan</h4>
+                            <p>वाहन नोंदणी व ड्रायव्हिंग लायसन्स</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #C62828, #EF5350);"><i class="fas fa-heartbeat"></i></div>
+                        <div class="app-info">
+                            <h4>Aarogya Setu</h4>
+                            <p>आरोग्य सेवा आणि माहिती</p>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon" style="background: linear-gradient(135deg, #00695C, #4DB6AC);"><i class="fas fa-seedling"></i></div>
+                        <div class="app-info">
+                            <h4>PM Kisan</h4>
+                            <p>पीएम किसान योजना माहिती</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== PHOTO GALLERY PAGE ===== -->
+    <div class="page" id="page-gallery">
+        <div class="page-banner">
+            <div class="container">
+                <h2>फोटो गॅलरी</h2>
+                <p>कार्यक्रम, विकास कामे आणि सामाजिक उपक्रमांचे फोटो</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>फोटो गॅलरी</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="tab-filter">
+                    <button class="tab-btn active">सर्व</button>
+                    <button class="tab-btn">कार्यक्रम</button>
+                    <button class="tab-btn">विकास कामे</button>
+                    <button class="tab-btn">सामाजिक उपक्रम</button>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #C62828, #EF5350);"><i class="fas fa-tint"></i></div>
+                        <div class="gallery-caption">रक्तदान शिबिर - जानेवारी २०२५</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #2E7D32, #66BB6A);"><i class="fas fa-tree"></i></div>
+                        <div class="gallery-caption">वृक्षारोपण मोहीम - ऑगस्ट २०२४</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #1565C0, #42A5F5);"><i class="fas fa-road"></i></div>
+                        <div class="gallery-caption">रस्ता डांबरीकरण कार्य</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #FF6F00, #FFB74D);"><i class="fas fa-lightbulb"></i></div>
+                        <div class="gallery-caption">LED पथदिवे बसविणे</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #7B1FA2, #BA68C8);"><i class="fas fa-heartbeat"></i></div>
+                        <div class="gallery-caption">आरोग्य शिबिर - डिसेंबर २०२४</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #E91E63, #F48FB1);"><i class="fas fa-users"></i></div>
+                        <div class="gallery-caption">महिला सबलीकरण कार्यक्रम</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #00695C, #4DB6AC);"><i class="fas fa-park"></i></div>
+                        <div class="gallery-caption">सार्वजनिक उद्यान विकास</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder" style="background: linear-gradient(135deg, #37474F, #78909C);"><i class="fas fa-hard-hat"></i></div>
+                        <div class="gallery-caption">ड्रेनेज सुधारणा कार्य</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== NEWS PAGE ===== -->
+    <div class="page" id="page-news">
+        <div class="page-banner">
+            <div class="container">
+                <h2>बातम्या व सूचना</h2>
+                <p>ताज्या बातम्या, सूचना आणि शासकीय नोटिसा</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>बातम्या</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="day">२५</span>
+                            <span class="month">जाने २०२५</span>
+                        </div>
+                        <div class="news-content">
+                            <h4>रक्तदान शिबिराचे यशस्वी आयोजन</h4>
+                            <p>प्रभाग कार्यालयात आयोजित रक्तदान शिबिरात ३५०+ नागरिकांनी रक्तदान करून मानवतेचे उत्तम उदाहरण प्रस्थापित केले.</p>
+                            <span class="news-tag" style="background:#E8F5E9; color:#2E7D32;">कार्यक्रम</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="day">२०</span>
+                            <span class="month">जाने २०२५</span>
+                        </div>
+                        <div class="news-content">
+                            <h4>पाणीपुरवठा वेळापत्रकात बदल</h4>
+                            <p>प्रभागातील पाणीपुरवठा वेळापत्रकात बदल करण्यात आला आहे. नवीन वेळापत्रक सकाळी ६ ते ९ आणि संध्याकाळी ५ ते ७.</p>
+                            <span class="news-tag" style="background:#FFF3E0; color:#E65100;">सूचना</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="day">१५</span>
+                            <span class="month">जाने २०२५</span>
+                        </div>
+                        <div class="news-content">
+                            <h4>मोफत आरोग्य शिबिर लवकरच</h4>
+                            <p>फेब्रुवारी महिन्यात प्रभागात मोफत आरोग्य तपासणी शिबिर आयोजित करण्यात येणार आहे. सर्व नागरिकांनी लाभ घ्यावा.</p>
+                            <span class="news-tag" style="background:#E3F2FD; color:#1565C0;">आगामी कार्यक्रम</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="day">१०</span>
+                            <span class="month">जाने २०२५</span>
+                        </div>
+                        <div class="news-content">
+                            <h4>शासकीय योजनांसाठी नोंदणी सुरू</h4>
+                            <p>प्रधानमंत्री आवास योजना, आयुष्मान भारत व इतर शासकीय योजनांसाठी नोंदणी प्रभाग कार्यालयात सुरू आहे.</p>
+                            <span class="news-tag" style="background:#F3E5F5; color:#7B1FA2;">शासकीय</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== GOVERNMENT SCHEMES PAGE ===== -->
+    <div class="page" id="page-schemes">
+        <div class="page-banner">
+            <div class="container">
+                <h2>शासकीय योजना</h2>
+                <p>नागरिकांसाठी उपलब्ध शासकीय योजनांची माहिती</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>शासकीय योजना</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="tab-filter">
+                    <button class="tab-btn active">सर्व</button>
+                    <button class="tab-btn">गृहनिर्माण</button>
+                    <button class="tab-btn">आरोग्य</button>
+                    <button class="tab-btn">शिक्षण</button>
+                    <button class="tab-btn">इतर</button>
+                </div>
+                <div class="scheme-card" style="border-right-color: #E65100;">
+                    <span class="scheme-type" style="background:#FFF3E0; color:#E65100;">गृहनिर्माण</span>
+                    <h4>🏠 प्रधानमंत्री आवास योजना (PMAY)</h4>
+                    <p>आर्थिकदृष्ट्या दुर्बल घटकांना स्वतःचे घर बांधण्यासाठी अर्थसहाय्य. शहरी भागातील लाभार्थ्यांसाठी ₹२.५ लाख पर्यंत अनुदान.</p>
+                </div>
+                <div class="scheme-card" style="border-right-color: #C62828;">
+                    <span class="scheme-type" style="background:#FFEBEE; color:#C62828;">आरोग्य</span>
+                    <h4>🏥 आयुष्मान भारत योजना</h4>
+                    <p>गरीब कुटुंबांना ₹५ लाखांपर्यंत मोफत उपचार. रुग्णालयात कॅशलेस उपचार सुविधा.</p>
+                </div>
+                <div class="scheme-card" style="border-right-color: #1565C0;">
+                    <span class="scheme-type" style="background:#E3F2FD; color:#1565C0;">शिक्षण</span>
+                    <h4>📚 विद्यार्थी शिष्यवृत्ती योजना</h4>
+                    <p>गुणवंत विद्यार्थ्यांसाठी शैक्षणिक शिष्यवृत्ती. SC/ST/OBC विद्यार्थ्यांसाठी विशेष योजना.</p>
+                </div>
+                <div class="scheme-card" style="border-right-color: #2E7D32;">
+                    <span class="scheme-type" style="background:#E8F5E9; color:#2E7D32;">इतर</span>
+                    <h4>👩 महिला सन्मान बचत पत्र योजना</h4>
+                    <p>महिलांसाठी विशेष बचत योजना. ७.५% व्याजदर. २ वर्षांच्या मुदतीसाठी.</p>
+                </div>
+                <div class="scheme-card" style="border-right-color: #7B1FA2;">
+                    <span class="scheme-type" style="background:#F3E5F5; color:#7B1FA2;">आरोग्य</span>
+                    <h4>💊 जन औषधि योजना</h4>
+                    <p>स्वस्त दरात औषधे उपलब्ध. जन औषधि केंद्रामधून सवलतीच्या दरात औषधे.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== CONTACT US PAGE ===== -->
+    <div class="page" id="page-contact">
+        <div class="page-banner">
+            <div class="container">
+                <h2>संपर्क करा</h2>
+                <p>आमच्याशी संपर्क साधा</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>संपर्क</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <h3 style="font-family: var(--font-heading); margin-bottom:20px; color:var(--primary-dark);">संपर्क माहिती</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>कार्यालय पत्ता</h5>
+                                <p>हरिभाऊ गिते फाउंडेशन, प्रभाग कार्यालय, नाशिक, महाराष्ट्र - ४२२ ०००</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h5>दूरध्वनी</h5>
+                                <p>+91 98765 43210 / +91 98765 43211</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>ई-मेल</h5>
+                                <p>info@haribhaugite.org</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h5>WhatsApp</h5>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h5>कार्यालय वेळ</h5>
+                                <p>सोमवार - शनिवार: सकाळी १० ते संध्याकाळी ६</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-container" style="margin:0; max-width:100%;">
+                            <h3 style="font-family: var(--font-heading); margin-bottom:20px; color:var(--primary-dark);">संदेश पाठवा</h3>
+                            <form onsubmit="submitContact(event)">
+                                <div class="form-group">
+                                    <label>नाव</label>
+                                    <input type="text" class="form-control" placeholder="आपले नाव" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ई-मेल</label>
+                                    <input type="email" class="form-control" placeholder="आपला ई-मेल" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>विषय</label>
+                                    <input type="text" class="form-control" placeholder="संदेशाचा विषय" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>संदेश</label>
+                                    <textarea class="form-control" placeholder="आपला संदेश लिहा..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                                    <i class="fas fa-paper-plane"></i> संदेश पाठवा
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:30px;">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Google Maps</h3>
+                        <p>कार्यालयाचे ठिकाण - नकाशा</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== EMERGENCY CONTACTS PAGE ===== -->
+    <div class="page" id="page-emergency">
+        <div class="page-banner" style="background: linear-gradient(135deg, #B71C1C, #C62828, #E53935);">
+            <div class="container">
+                <h2>⚠️ आपत्कालीन संपर्क</h2>
+                <p>तातडीच्या परिस्थितीत तात्काळ संपर्क साधा</p>
+                <div class="breadcrumb"><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a> / <span>आपत्कालीन संपर्क</span></div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="emergency-grid">
+                    <div class="emergency-card" style="border-top-color: #1565C0;">
+                        <i class="fas fa-shield-alt" style="color:#1565C0;"></i>
+                        <h4>पोलीस</h4>
+                        <p>पोलीस नियंत्रण कक्ष</p>
+                        <a href="tel:100"><span class="phone" style="color:#1565C0;">१००</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #C62828;">
+                        <i class="fas fa-fire-extinguisher" style="color:#C62828;"></i>
+                        <h4>अग्निशमन दल</h4>
+                        <p>आग विझवणे व बचाव</p>
+                        <a href="tel:101"><span class="phone" style="color:#C62828;">१०१</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #2E7D32;">
+                        <i class="fas fa-ambulance" style="color:#2E7D32;"></i>
+                        <h4>रुग्णवाहिका</h4>
+                        <p>आपत्कालीन वैद्यकीय सेवा</p>
+                        <a href="tel:108"><span class="phone" style="color:#2E7D32;">१०८</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #E65100;">
+                        <i class="fas fa-building" style="color:#E65100;"></i>
+                        <h4>प्रभाग कार्यालय</h4>
+                        <p>नगरसेवक कार्यालय</p>
+                        <a href="tel:+919876543210"><span class="phone" style="color:#E65100;">+91 98765 43210</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #7B1FA2;">
+                        <i class="fas fa-female" style="color:#7B1FA2;"></i>
+                        <h4>महिला हेल्पलाइन</h4>
+                        <p>महिला सुरक्षा</p>
+                        <a href="tel:1091"><span class="phone" style="color:#7B1FA2;">१०९१</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #00695C;">
+                        <i class="fas fa-child" style="color:#00695C;"></i>
+                        <h4>बालसंरक्षण</h4>
+                        <p>बालसुरक्षा हेल्पलाइन</p>
+                        <a href="tel:1098"><span class="phone" style="color:#00695C;">१०९८</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #37474F;">
+                        <i class="fas fa-bolt" style="color:#37474F;"></i>
+                        <h4>वीज आपत्कालीन</h4>
+                        <p>वीज पुरवठा तक्रार</p>
+                        <a href="tel:1912"><span class="phone" style="color:#37474F;">१९१२</span></a>
+                    </div>
+                    <div class="emergency-card" style="border-top-color: #FF6F00;">
+                        <i class="fas fa-phone-alt" style="color:#FF6F00;"></i>
+                        <h4>आपत्ती व्यवस्थापन</h4>
+                        <p>NDRF / SDRF</p>
+                        <a href="tel:112"><span class="phone" style="color:#FF6F00;">११२</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== ADMIN PAGE ===== -->
+    <div class="page" id="page-admin">
+        <div class="page-banner" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
+            <div class="container">
+                <h2>🔐 ॲडमिन पॅनेल</h2>
+                <p>तक्रार व्यवस्थापन व सूचना प्रणाली</p>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <!-- Admin Login -->
+                <div id="adminLogin" class="admin-login">
+                    <div class="form-container">
+                        <h3 style="text-align:center; margin-bottom:25px; font-family:var(--font-heading);">ॲडमिन लॉगिन</h3>
+                        <form onsubmit="adminLoginFn(event)">
+                            <div class="form-group">
+                                <label>वापरकर्ता नाव</label>
+                                <input type="text" class="form-control" id="adminUser" value="admin" required>
+                            </div>
+                            <div class="form-group">
+                                <label>पासवर्ड</label>
+                                <input type="password" class="form-control" id="adminPass" value="admin123" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                                <i class="fas fa-sign-in-alt"></i> लॉगिन
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Admin Dashboard -->
+                <div id="adminDashboard" class="admin-dashboard">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
+                        <h3 style="font-family:var(--font-heading); font-size:1.5rem;">ॲडमिन डॅशबोर्ड</h3>
+                        <div>
+                            <button class="btn btn-whatsapp btn-sm" onclick="showWhatsAppModal()">
+                                <i class="fab fa-whatsapp"></i> WhatsApp संदेश पाठवा
+                            </button>
+                            <button class="btn btn-sm" style="background:#C62828; color:white;" onclick="adminLogout()">
+                                <i class="fas fa-sign-out-alt"></i> लॉगआउट
+                            </button>
+                        </div>
+                    </div>
+                    <div class="admin-stats">
+                        <div class="admin-stat">
+                            <span class="number" style="color:var(--primary);" id="totalComplaints">0</span>
+                            <span class="label">एकूण तक्रारी</span>
+                        </div>
+                        <div class="admin-stat">
+                            <span class="number" style="color:#FFC107;" id="pendingComplaints">0</span>
+                            <span class="label">प्रलंबित</span>
+                        </div>
+                        <div class="admin-stat">
+                            <span class="number" style="color:#1565C0;" id="progressComplaints">0</span>
+                            <span class="label">प्रगतीपथावर</span>
+                        </div>
+                        <div class="admin-stat">
+                            <span class="number" style="color:#2E7D32;" id="solvedComplaints">0</span>
+                            <span class="label">निराकरण</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" onclick="switchAdminTab('all')">सर्व तक्रारी</button>
+                        <button class="admin-tab" onclick="switchAdminTab('pending')">प्रलंबित</button>
+                        <button class="admin-tab" onclick="switchAdminTab('progress')">प्रगतीपथावर</button>
+                        <button class="admin-tab" onclick="switchAdminTab('solved')">निराकरण</button>
+                    </div>
+
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>तक्रार क्र.</th>
+                                    <th>नागरिक</th>
+                                    <th>मोबाइल</th>
+                                    <th>विभाग</th>
+                                    <th>परिसर</th>
+                                    <th>तारीख</th>
+                                    <th>स्थिती</th>
+                                    <th>कृती</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody">
+                                <tr>
+                                    <td colspan="8" style="text-align:center; padding:40px; color:var(--text-light);">
+                                        अद्याप कोणतीही तक्रार नोंदवलेली नाही
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>हरिभाऊ गिते फाउंडेशन</h4>
+                    <p>प्रभागातील नागरिकांच्या सर्वांगीण विकासासाठी आणि समाजसेवेसाठी कटिबद्ध. नगरसेवक कार्यालय व नागरिक यांच्यातील संवाद सुधारण्यासाठी हे डिजिटल पोर्टल.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>द्रुत दुवे</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="navigateTo('home')">मुख्यपृष्ठ</a></li>
+                        <li><a href="#" onclick="navigateTo('about')">फाउंडेशन विषयी</a></li>
+                        <li><a href="#" onclick="navigateTo('nagarsevak')">नगरसेवक</a></li>
+                        <li><a href="#" onclick="navigateTo('prabhag')">प्रभाग माहिती</a></li>
+                        <li><a href="#" onclick="navigateTo('events')">कार्यक्रम</a></li>
+                        <li><a href="#" onclick="navigateTo('works')">सुरू कामे</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>सेवा</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="navigateTo('grievance')">तक्रार नोंदणी</a></li>
+                        <li><a href="#" onclick="navigateTo('complaint-status')">तक्रार स्थिती</a></li>
+                        <li><a href="#" onclick="navigateTo('eservices')">ई-सेवा</a></li>
+                        <li><a href="#" onclick="navigateTo('schemes')">शासकीय योजना</a></li>
+                        <li><a href="#" onclick="navigateTo('gallery')">फोटो गॅलरी</a></li>
+                        <li><a href="#" onclick="navigateTo('news')">बातम्या</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>संपर्क</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="color:var(--saffron); margin-left:8px;"></i> नाशिक, महाराष्ट्र</li>
+                        <li><i class="fas fa-phone" style="color:var(--saffron); margin-left:8px;"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope" style="color:var(--saffron); margin-left:8px;"></i> info@haribhaugite.org</li>
+                    </ul>
+                    <div style="margin-top:15px;">
+                        <a href="#" onclick="navigateTo('emergency')" class="btn btn-sm" style="background:#C62828; color:white; font-size:0.8rem;">
+                            <i class="fas fa-ambulance"></i> आपत्कालीन संपर्क
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© २०२५ हरिभाऊ गिते फाउंडेशन. सर्व हक्क राखीव. | नगरसेवक: गणेशभाऊ गिते & दीपालीताई गिते</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== WHATSAPP MODAL ===== -->
+    <div class="modal-overlay" id="whatsappModal">
+        <div class="modal">
+            <div class="modal-header" style="background: linear-gradient(135deg, #128C7E, #25D366);">
+                <h3><i class="fab fa-whatsapp"></i> WhatsApp बल्क संदेश</h3>
+                <button class="modal-close" onclick="closeWhatsAppModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>संदेश प्रकार</label>
+                    <select class="form-control" id="msgType">
+                        <option value="event">कार्यक्रम सूचना</option>
+                        <option value="emergency">आपत्कालीन सूचना</option>
+                        <option value="complaint">तक्रार अपडेट</option>
+                        <option value="general">सामान्य सूचना</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>संदेश</label>
+                    <textarea class="form-control" id="whatsappMessage" placeholder="WhatsApp संदेश लिहा..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>प्राप्तकर्ते</label>
+                    <select class="form-control">
+                        <option value="all">सर्व नागरिक</option>
+                        <option value="area">विशिष्ट परिसर</option>
+                        <option value="complainant">तक्रारदार</option>
+                    </select>
+                </div>
+                <button class="btn btn-whatsapp" style="width:100%; justify-content:center;" onclick="sendBulkWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> संदेश पाठवा
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== STATUS UPDATE MODAL ===== -->
+    <div class="modal-overlay" id="statusModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>तक्रार स्थिती अपडेट</h3>
+                <button class="modal-close" onclick="closeStatusModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>तक्रार क्रमांक</label>
+                    <input type="text" class="form-control" id="updateComplaintId" readonly>
+                </div>
+                <div class="form-group">
+                    <label>नवीन स्थिती</label>
+                    <select class="form-control" id="newStatus">
+                        <option value="pending">प्रलंबित</option>
+                        <option value="progress">प्रगतीपथावर</option>
+                        <option value="solved">निराकरण</option>
+                        <option value="rejected">नाकारले</option>
+                    </select>
+                </div>
+                <div class="form-group" id="reasonGroup" style="display:none;">
+                    <label>कारण (निराकरण न झाल्यास)</label>
+                    <textarea class="form-control" id="rejectionReason" placeholder="कारण लिहा..."></textarea>
+                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="updateComplaintStatus()">
+                    <i class="fas fa-save"></i> अपडेट करा
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== DATABASE SIMULATION =====
+        let complaints = [];
+        let complaintCounter = 0;
+        let isAdminLoggedIn = false;
+
+        // ===== NAVIGATION =====
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            
+            // Show target page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+                target.classList.add('fade-in');
+            }
+
+            // Update nav active state
+            document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+            
+            // Close mobile nav
+            document.getElementById('mainNav').classList.remove('show');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // If admin page, check login
+            if (pageId === 'admin') {
+                updateAdminDashboard();
+            }
+        }
+
+        // ===== MOBILE NAV TOGGLE =====
+        function toggleNav() {
+            document.getElementById('mainNav').classList.toggle('show');
+        }
+
+        // ===== SCROLL TO TOP BUTTON =====
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        // ===== GRIEVANCE FORM =====
+        function submitGrievance(e) {
+            e.preventDefault();
+            
+            complaintCounter++;
+            const now = new Date();
+            const dateStr = now.getFullYear().toString() +
+                (now.getMonth() + 1).toString().padStart(2, '0') +
+                now.getDate().toString().padStart(2, '0');
+            const complaintId = 'HGF-' + dateStr + '-' + complaintCounter.toString().padStart(3, '0');
+            
+            const complaint = {
+                id: complaintId,
+                name: document.getElementById('citizenName').value,
+                mobile: document.getElementById('citizenMobile').value,
+                area: document.getElementById('citizenArea').value,
+                department: document.getElementById('department').value,
+                description: document.getElementById('issueDescription').value,
+                status: 'pending',
+                date: now.toLocaleDateString('mr-IN'),
+                timestamp: now.getTime(),
+                reason: ''
+            };
+
+            complaints.push(complaint);
+
+            // Show success
+            document.getElementById('grievanceForm').style.display = 'none';
+            document.getElementById('grievanceSuccess').style.display = 'block';
+            document.getElementById('complaintId').textContent = complaintId;
+
+            // Save to localStorage
+            localStorage.setItem('complaints', JSON.stringify(complaints));
+        }
+
+        function resetGrievanceForm() {
+            document.getElementById('grievanceForm').style.display = 'block';
+            document.getElementById('grievanceSuccess').style.display = 'none';
+            document.getElementById('grievanceForm').reset();
+        }
+
+        // ===== COMPLAINT TRACKING =====
+        function trackComplaint() {
+            const trackId = document.getElementById('trackComplaintId').value.trim();
+            const trackMobile = document.getElementById('trackMobile').value.trim();
+
+            if (!trackId && !trackMobile) {
+                alert('कृपया तक्रार क्रमांक किंवा मोबाइल क्रमांक टाका.');
+                return;
+            }
+
+            let found = null;
+            for (let c of complaints) {
+                if ((trackId && c.id === trackId) || (trackMobile && c.mobile === trackMobile)) {
+                    found = c;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById('complaintResult');
+
+            if (found) {
+                document.getElementById('resultId').textContent = found.id;
+                document.getElementById('resultName').textContent = found.name;
+                document.getElementById('resultDept').textContent = found.department;
+                document.getElementById('resultDate').textContent = found.date;
+                
+                const statusEl = document.getElementById('resultStatus');
+                const statusMap = {
+                    'pending': { text: 'प्रलंबित', class: 'status-pending' },
+                    'progress': { text: 'प्रगतीपथावर', class: 'status-progress' },
+                    'solved': { text: 'निराकरण', class: 'status-solved' },
+                    'rejected': { text: 'नाकारले', class: 'status-rejected' }
+                };
+                const s = statusMap[found.status] || statusMap['pending'];
+                statusEl.textContent = s.text;
+                statusEl.className = 'status-badge ' + s.class;
+
+                resultDiv.classList.add('show');
+            } else {
+                // Show demo result
+                document.getElementById('resultId').textContent = trackId || 'N/A';
+                document.getElementById('resultName').textContent = 'डेमो नागरिक';
+                document.getElementById('resultDept').textContent = 'रस्ते विभाग';
+                document.getElementById('resultDate').textContent = '२५/०१/२०२५';
+                document.getElementById('resultStatus').textContent = 'प्रगतीपथावर';
+                document.getElementById('resultStatus').className = 'status-badge status-progress';
+                resultDiv.classList.add('show');
+            }
+        }
+
+        // ===== ADMIN LOGIN =====
+        function adminLoginFn(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+
+            if (user === 'admin' && pass === 'admin123') {
+                isAdminLoggedIn = true;
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminDashboard').classList.add('show');
+                updateAdminDashboard();
+            } else {
+                alert('चुकीचे वापरकर्ता नाव किंवा पासवर्ड!');
+            }
+        }
+
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminDashboard').classList.remove('show');
+        }
+
+        function updateAdminDashboard() {
+            if (!isAdminLoggedIn) return;
+
+            const total = complaints.length;
+            const pending = complaints.filter(c => c.status === 'pending').length;
+            const progress = complaints.filter(c => c.status === 'progress').length;
+            const solved = complaints.filter(c => c.status === 'solved').length;
+
+            document.getElementById('totalComplaints').textContent = total;
+            document.getElementById('pendingComplaints').textContent = pending;
+            document.getElementById('progressComplaints').textContent = progress;
+            document.getElementById('solvedComplaints').textContent = solved;
+
+            renderAdminTable(complaints);
+        }
+
+        function renderAdminTable(data) {
+            const tbody = document.getElementById('adminTableBody');
+            
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:40px; color:var(--text-light);">अद्याप कोणतीही तक्रार नोंदवलेली नाही</td></tr>`;
+                return;
+            }
+
+            const statusMap = {
+                'pending': { text: 'प्रलंबित', class: 'status-pending' },
+                'progress': { text: 'प्रगतीपथावर', class: 'status-progress' },
+                'solved': { text: 'निराकरण', class: 'status-solved' },
+                'rejected': { text: 'नाकारले', class: 'status-rejected' }
+            };
+
+            tbody.innerHTML = data.map(c => {
+                const s = statusMap[c.status] || statusMap['pending'];
+                return `
+                    <tr>
+                        <td><strong>${c.id}</strong></td>
+                        <td>${c.name}</td>
+                        <td>${c.mobile}</td>
+                        <td>${c.department}</td>
+                        <td>${c.area}</td>
+                        <td>${c.date}</td>
+                        <td><span class="status-badge ${s.class}">${s.text}</span></td>
+                        <td>
+                            <div class="admin-actions">
+                                <button class="admin-btn admin-btn-assign" onclick="openStatusModal('${c.id}')">
+                                    <i class="fas fa-edit"></i> अपडेट
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function switchAdminTab(filter) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let filtered = complaints;
+            if (filter !== 'all') {
+                filtered = complaints.filter(c => c.status === filter);
+            }
+            renderAdminTable(filtered);
+        }
+
+        // ===== STATUS UPDATE MODAL =====
+        function openStatusModal(complaintId) {
+            document.getElementById('updateComplaintId').value = complaintId;
+            document.getElementById('statusModal').classList.add('show');
+        }
+
+        function closeStatusModal() {
+            document.getElementById('statusModal').classList.remove('show');
+        }
+
+        document.getElementById('newStatus').addEventListener('change', function() {
+            document.getElementById('reasonGroup').style.display = 
+                this.value === 'rejected' ? 'block' : 'none';
+        });
+
+        function updateComplaintStatus() {
+            const complaintId = document.getElementById('updateComplaintId').value;
+            const newStatus = document.getElementById('newStatus').value;
+            const reason = document.getElementById('rejectionReason').value;
+
+            const complaint = complaints.find(c => c.id === complaintId);
+            if (complaint) {
+                complaint.status = newStatus;
+                if (newStatus === 'rejected') {
+                    complaint.reason = reason;
+                }
+                localStorage.setItem('complaints', JSON.stringify(complaints));
+                updateAdminDashboard();
+                closeStatusModal();
+
+                // Simulate WhatsApp notification
+                const statusText = {
+                    'pending': 'प्रलंबित',
+                    'progress': 'प्रगतीपथावर',
+                    'solved': 'निराकरण',
+                    'rejected': 'नाकारले'
+                };
+                alert(`✅ तक्रार ${complaintId} ची स्थिती "${statusText[newStatus]}" वर अपडेट केली.\n\n📱 WhatsApp सूचना नागरिकाला (${complaint.mobile}) पाठवली.`);
+            }
+        }
+
+        // ===== WHATSAPP MODAL =====
+        function showWhatsAppModal() {
+            document.getElementById('whatsappModal').classList.add('show');
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('whatsappModal').classList.remove('show');
+        }
+
+        function sendBulkWhatsApp() {
+            const msgType = document.getElementById('msgType').value;
+            const message = document.getElementById('whatsappMessage').value;
+
+            if (!message.trim()) {
+                alert('कृपया संदेश लिहा.');
+                return;
+            }
+
+            const typeNames = {
+                'event': 'कार्यक्रम सूचना',
+                'emergency': 'आपत्कालीन सूचना',
+                'complaint': 'तक्रार अपडेट',
+                'general': 'सामान्य सूचना'
+            };
+
+            alert(`✅ WhatsApp बल्क संदेश यशस्वीरित्या पाठवला!\n\nप्रकार: ${typeNames[msgType]}\nसंदेश: ${message}\n\n📱 सर्व नोंदणीकृत नागरिकांना संदेश पाठवला.`);
+            closeWhatsAppModal();
+            document.getElementById('whatsappMessage').value = '';
+        }
+
+        // ===== CONTACT FORM =====
+        function submitContact(e) {
+            e.preventDefault();
+            alert('✅ आपला संदेश यशस्वीरित्या पाठवला गेला! आम्ही लवकरच आपल्याशी संपर्क साधू.');
+            e.target.reset();
+        }
+
+        // ===== LOAD SAVED COMPLAINTS =====
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('complaints');
+            if (saved) {
+                complaints = JSON.parse(saved);
+                complaintCounter = complaints.length;
+            }
+        });
+
+        // ===== CLOSE MODALS ON OUTSIDE CLICK =====
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('show');
+                }
+            });
+        });
+
+        // ===== TAB FILTER CLICK HANDLERS =====
+        document.querySelectorAll('.tab-filter .tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
